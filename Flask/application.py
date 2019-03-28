@@ -2,22 +2,22 @@ from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
 import json
 
-application = Flask(__name__)
-CORS(application)
+app = Flask(__name__, static_url_path='')
+CORS(app)
 
 
-@application.route('/')
+@app.route('/')
 def index():
-    return "Hello World"
+    return send_file('static/index.html')
 
-@application.route('/search',methods=['POST'])
+@app.route('/search',methods=['POST'])
 def search():
     data = request.get_json()
     if data["keyword"]:
         to_return = {"result": [{"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param"}]}
     return jsonify(**to_return)
 
-@application.route('/img/<filename>')
+@app.route('/img/<filename>')
 # Fix the problem of finding images
 def get_image(filename=None):
     return send_file('static/img/'+filename, mimetype='image/png')
@@ -26,6 +26,6 @@ def get_image(filename=None):
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
-    #application.debug = True
-    application.threaded = True
-    application.run()
+    #app.debug = True
+    app.threaded = True
+    app.run()
