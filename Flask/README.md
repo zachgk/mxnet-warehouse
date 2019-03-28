@@ -8,7 +8,7 @@ virtualenv venv
 ```
 Activate your virtual env
 ```
-source venv/bin.activate
+source venv/bin/activate
 ```
 Install essential dependencies
 ```
