@@ -8,14 +8,13 @@ CORS(application)
 
 @application.route('/')
 def index():
-    return render_template('index.html')
+    return "Hello World"
 
 @application.route('/search',methods=['POST'])
 def search():
     data = request.get_json()
     if data["keyword"]:
-        to_return = {"result": "Data"}
-
+        to_return = {"result": [{"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param"}]}
     return jsonify(**to_return)
 
 @application.route('/img/<filename>')
