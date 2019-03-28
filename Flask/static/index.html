@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tweety!</title>
+  <!-- Bootstrap core CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Basic Module input -->
+  <script src = "./js/angular.js"></script>
+  <script src="./js/angular-animate.js"></script>
+  <script src="./js/angular-sanitize.js"></script>
+  <script src="./js/ui-bootstrap-tpls-2.5.0.js"></script>
+  <!-- Main API -->
+  <script src="./js/app.js"></script>
+</head>
+
+<body ng-controller="MyController" ng-init = "init()">
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">MX-warehouse</a>
+    </div>
+  </div>
+</nav>
+<br><br><br>
+<div class="container">
+  <div class="jumbotron">
+    <h2>Hello! Welcome To MXNet Warehouse</h2>
+    <p class="lead">Search your favourite mxnet component in here: {{word}}</p>
+    <div class="input-group input-group-lg">
+    <div class="input-group-btn" uib-dropdown>
+      <button id="oldword" type="button" class="btn btn-info" uib-dropdown-toggle>
+      Search Existed<span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="oldword">
+        <li ng-repeat="sword in oldwords">
+          <a ng-click="searchold(sword)">{{sword}}</a>
+        </li>
+      </ul>
+    </div>
+      <input type="text" class="form-control" ng-model="$parent.word" placeholder="Word: res50, etc" aria-describedby="sizing-addon1">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-success" ng-click="searchword()">Search</button>
+      </div>
+      <div class="input-group-btn" ng-hide="hideupdate">
+        <button type="button" class="btn btn-info" ng-click="fetchupdate()">Updates {{numofupdates}}</button>
+      </div>
+    </div>
+      </div>
+    </div>
+        
+  </body>
+  </html>
