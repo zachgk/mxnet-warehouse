@@ -21,7 +21,7 @@ def listComponents():
     if query:
         words = query.strip().split(' ')
         finding = {
-            "$or": [{field: {"$regex": '|'.join([".*%s.*" % word for word in words])}} for field in ['name', 'type']]
+            "$or": [{field: {"$regex": '|'.join([".*%s.*" % word for word in words])}} for field in ['name', 'type', 'tags']]
         }
     else:
         finding = dict()

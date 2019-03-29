@@ -28,6 +28,7 @@ function MainCtrl($http, $scope, $interval) {
             console.log(success["data"]);
             if (success["data"]["result"].length > 0) {
                 $scope.resultList = success["data"]["result"];
+                $scope.resultList.sort(function(a,b) { return b.usage[b.usage.length - 1] - a.usage[a.usage.length - 1]; });
                 $scope.showResult = true;
             } else {
                 $scope.showError = true;

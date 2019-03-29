@@ -48,7 +48,7 @@
     <div ng-show="showResult">
       <div ng-repeat="item in resultList">
             <div class="panel panel-default">
-              <div class="panel-heading">{{item.name}}</div>
+                <div class="panel-heading"><strong>{{item.name}}</strong>&nbsp;&nbsp;<span ng-repeat="tag in item.tags"><span class="label label-primary" >{{tag}}</span>&nbsp;</span></div>
               <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
