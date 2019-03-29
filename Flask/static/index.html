@@ -36,26 +36,40 @@
     <h2>Hello! Welcome To MXNet Warehouse</h2>
     <p class="lead">Search your favourite mxnet component in here: {{word}}</p>
     <div class="input-group input-group-lg">
-    <div class="input-group-btn" uib-dropdown>
-      <button id="oldword" type="button" class="btn btn-info" uib-dropdown-toggle>
-      Search Existed<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="oldword">
-        <li ng-repeat="sword in oldwords">
-          <a ng-click="searchold(sword)">{{sword}}</a>
-        </li>
-      </ul>
-    </div>
-      <input type="text" class="form-control" ng-model="$parent.word" placeholder="Word: res50, etc" aria-describedby="sizing-addon1">
+      <div class="input-group-btn" uib-dropdown>
+        <button id="oldword" type="button" class="btn btn-info" uib-dropdown-toggle>
+        Search Existed<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="oldword">
+          <li ng-repeat="sword in oldwords">
+            <a ng-click="searchold(sword)">{{sword}}</a>
+          </li>
+        </ul>
+      </div>
+      <input type="text" class="form-control" ng-model="word" placeholder="Word: res50, etc" aria-describedby="sizing-addon1">
       <div class="input-group-btn">
         <button type="button" class="btn btn-success" ng-click="searchword()">Search</button>
       </div>
-      <div class="input-group-btn" ng-hide="hideupdate">
-        <button type="button" class="btn btn-info" ng-click="fetchupdate()">Updates {{numofupdates}}</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <div ng-show="showResult">
+      <div ng-repeat="item in resultList">
+          <div class="panel panel-default">
+              <div class="panel-heading">{{item.name}}</div>
+              <div class="panel-body" ng-show="item.type == 'symbol-params'">
+                <p><strong>type: </strong>{{item.type}}</p>
+                <p><strong>symbol URL: </strong>{{item.symbol_url}}</p>
+                <p><strong>params URL: </strong>{{item.params_url}}</p>
+              </div>
+            </div>
       </div>
     </div>
-      </div>
+    <div class="alert alert-danger" role="alert" ng-show="showError">
+        Sorry, {{errorMsg}}
     </div>
+</div>
         
   </body>
   </html>

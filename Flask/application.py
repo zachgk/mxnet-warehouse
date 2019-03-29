@@ -13,8 +13,11 @@ def index():
 @app.route('/search',methods=['POST'])
 def search():
     data = request.get_json()
+    print(data)
     if data["keyword"]:
         to_return = {"result": [{"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param"}]}
+    else:
+        to_return = {"result" : []}
     return jsonify(**to_return)
 
 @app.route('/img/<filename>')
