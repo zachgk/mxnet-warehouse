@@ -17,6 +17,8 @@ function MainCtrl($http, $scope, $interval) {
             return "panel-success";
         } else if(item.tags.includes("operator")) {
             return "panel-info";
+        } else if(item.tags.includes("block")) {
+            return "panel-warning";
         } else {
             return "panel-default";
         }
