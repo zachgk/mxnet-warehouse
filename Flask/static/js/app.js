@@ -1,5 +1,5 @@
 var preUrl = "http://127.0.0.1:5000"
-var app = angular.module('myapp',['ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+var app = angular.module('myapp',['ui.bootstrap', 'chart.js'])
 app.controller('MyController', MainCtrl);
 
 function MainCtrl($http, $scope, $interval){

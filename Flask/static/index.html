@@ -9,9 +9,9 @@
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <!-- Basic Module input -->
   <script src = "./js/angular.js"></script>
-  <script src="./js/angular-animate.js"></script>
-  <script src="./js/angular-sanitize.js"></script>
   <script src="./js/ui-bootstrap-tpls-2.5.0.js"></script>
+  <script src="./js/Chart.min.js"></script>
+  <script src="./js/angular-chart.min.js"></script>
   <!-- Main API -->
   <script src="./js/app.js"></script>
 </head>
@@ -36,16 +36,6 @@
     <h2>Hello! Welcome To MXNet Warehouse</h2>
     <p class="lead">Search your favourite mxnet component in here: {{word}}</p>
     <div class="input-group input-group-lg">
-      <div class="input-group-btn" uib-dropdown>
-        <button id="oldword" type="button" class="btn btn-info" uib-dropdown-toggle>
-        Search Existed<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="oldword">
-          <li ng-repeat="sword in oldwords">
-            <a ng-click="searchold(sword)">{{sword}}</a>
-          </li>
-        </ul>
-      </div>
       <input type="text" class="form-control" ng-model="word" placeholder="Word: res50, etc" aria-describedby="sizing-addon1">
       <div class="input-group-btn">
         <button type="button" class="btn btn-success" ng-click="searchword()">Search</button>
@@ -56,14 +46,27 @@
 <div class="container">
     <div ng-show="showResult">
       <div ng-repeat="item in resultList">
-          <div class="panel panel-default">
+            <div class="panel panel-default">
               <div class="panel-heading">{{item.name}}</div>
-              <div class="panel-body" ng-show="item.type == 'symbol-params'">
-                <p><strong>type: </strong>{{item.type}}</p>
-                <p><strong>symbol URL: </strong>{{item.symbol_url}}</p>
-                <p><strong>params URL: </strong>{{item.params_url}}</p>
+              <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="symbol-params" ng-show="item.type == 'symbol-params'">
+                            <p><strong>type: </strong>{{item.type}}</p>
+                            <p><strong>symbol URL: </strong>{{item.symbol_url}}</p>
+                            <p><strong>params URL: </strong>{{item.params_url}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <p><strong>Download Statistics</strong></p>
+                      <canvas id="line" class="chart chart-line" chart-data="item.usage"
+                        chart-labels="item.labels">
+                      </canvas>
+                    </div>
+                </div>
               </div>
             </div>
+        </div>
       </div>
     </div>
     <div class="alert alert-danger" role="alert" ng-show="showError">
