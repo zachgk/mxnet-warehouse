@@ -19,8 +19,8 @@ function MainCtrl($http, $scope, $interval){
       // Prepare input data
       obj = {"keyword": $scope.word}
       $http({
-        url: preUrl+"/search",
-        method: "POST",
+        url: preUrl+"/api/components",
+        method: "GET",
         data: obj
       }).then(function (success){
         console.log(success["data"])

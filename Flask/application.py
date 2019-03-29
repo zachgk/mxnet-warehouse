@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, ObjectId
 from bson.json_util import dumps
 import json
 
@@ -15,9 +15,13 @@ components = mongo.db.components
 def index():
     return send_file('static/index.html')
 
-@app.route('/api/search')
-def search():
+@app.route('/api/components')
+def listComponents():
     return dumps({'result': components.find()})
+
+@app.route('/api/components/<component>')
+def getComponent(component):
+    return dumps({'result': components.find_one({'_id': ObjectId(component)})})
 
 @app.route('/img/<filename>')
 # Fix the problem of finding images
