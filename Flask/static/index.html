@@ -47,21 +47,22 @@
 <div class="container">
     <div ng-show="showResult">
       <div ng-repeat="item in resultList">
-            <div class="panel panel-default">
+            <div class="panel" ng-class="componentColor(item)">
                 <div class="panel-heading"><strong>{{item.name}}</strong>&nbsp;&nbsp;<span ng-repeat="tag in item.tags"><span class="label label-primary" >{{tag}}</span>&nbsp;</span></div>
               <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div id="symbol-params" ng-show="item.type == 'symbol-params'">
                             <p><strong>type: </strong>{{item.type}}</p>
+                            <p ng-show="item.paper"><strong>paper: </strong><a ng-href="{{item.paper}}">{{item.paper}}</a></p>
                             <p><strong>symbol URL: </strong>{{item.symbol_url}}</p>
-                            <p><strong>params URL: </strong>{{item.params_url}}</p>
+                            <p ng-show="item.params_url"><strong>params URL: </strong>{{item.params_url}}</p>
                         </div>
                     </div>
                     <div class="col-md-6">
                       <p><strong>Download Statistics</strong></p>
                       <canvas id="line" class="chart chart-line" chart-data="item.usage"
-                        chart-labels="item.labels">
+                        chart-labels="item.labels" height="80px">
                       </canvas>
                     </div>
                 </div>

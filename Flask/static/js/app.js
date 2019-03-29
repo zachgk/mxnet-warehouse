@@ -12,6 +12,15 @@ function MainCtrl($http, $scope, $interval) {
     $scope.goLogin = function() {
         window.location = "login.html";
     };
+    $scope.componentColor = function(item) {
+        if(item.tags.includes("model")) {
+            return "panel-success";
+        } else if(item.tags.includes("operator")) {
+            return "panel-info";
+        } else {
+            return "panel-default";
+        }
+    };
     $scope.searchword = function() {
         // Initialization result section
         $scope.showError = false;

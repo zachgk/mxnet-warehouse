@@ -10,12 +10,12 @@ db = client.mxWarehouse
 components = db.components
 
 new_components = [
-        {"name": "resnet-18", "type": "symbol-params", "symbol_url": "https://sample.com/res18-symbol.json", "params_url": "https://sample.com/res18-0000.param", "tags": ["model", "image", "residual"]},
-        {"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param", "tags": ["model", "image", "residual"]},
-        {"name": "resnet-152", "type": "symbol-params", "symbol_url": "https://sample.com/res152-symbol.json", "params_url": "https://sample.com/res152-0000.param", "tags": ["model", "image", "residual"]},
-        {"name": "relu", "type": "symbol-params", "symbol_url": "https://sample.com/relu.json", "tags": ["operator", "activation"]},
-        {"name": "elu", "type": "symbol-params", "symbol_url": "https://sample.com/elu.json", "tags": ["operator", "activation"]},
-        {"name": "leakRelu", "type": "symbol-params", "symbol_url": "https://sample.com/leakyRelu.json", "tags": ["operator", "activation"]},
+        {"name": "resnet-18", "type": "symbol-params", "symbol_url": "https://sample.com/res18-symbol.json", "params_url": "https://sample.com/res18-0000.param", "paper": "http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html", "tags": ["model", "image", "residual"]},
+        {"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param", "paper": "http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html","tags": ["model", "image", "residual"]},
+        {"name": "resnet-152", "type": "symbol-params", "symbol_url": "https://sample.com/res152-symbol.json", "params_url": "https://sample.com/res152-0000.param", "paper": "http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html", "tags": ["model", "image", "residual"]},
+        {"name": "relu", "type": "symbol-params", "symbol_url": "https://sample.com/relu.json", "paper": "https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf", "tags": ["operator", "activation"]},
+        {"name": "elu", "type": "symbol-params", "symbol_url": "https://sample.com/elu.json", "paper": "https://arxiv.org/abs/1511.07289", "tags": ["operator", "activation"]},
+        {"name": "leakyRelu", "type": "symbol-params", "symbol_url": "https://sample.com/leakyRelu.json", "paper": "http://robotics.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf", "tags": ["operator", "activation"]},
 ]
 for comp in new_components:
     comp['labels'] = ["January", "February", "March", "April", "May", "June", "July"]
