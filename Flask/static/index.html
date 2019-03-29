@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-success" ng-click="goLogin()">I want to upload a model!</button>
+        <button type="button" class="btn btn-success" ng-click="goLogin()">Add your model</button>
     </div>
   </div>
 </nav>
@@ -34,13 +34,14 @@
 <div class="container">
   <div class="jumbotron">
     <h2>Hello! Welcome To MXNet Warehouse</h2>
-    <p class="lead">Search your favourite mxnet component in here: {{word}}</p>
-    <div class="input-group input-group-lg">
-      <input type="text" class="form-control" ng-model="word" placeholder="Word: res50, etc" aria-describedby="sizing-addon1">
+    <form ng-submit="searchword()" >
+      <div class="input-group input-group-lg">
+      <input type="text" class="form-control" ng-model="word" placeholder="Search your favorite MXNet component like resnet" aria-describedby="sizing-addon1">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-success" ng-click="searchword()">Search</button>
+        <input type="submit" class="btn btn-success" value="Search">
       </div>
-    </div>
+      </div>
+    </form>
   </div>
 </div>
 <div class="container">
