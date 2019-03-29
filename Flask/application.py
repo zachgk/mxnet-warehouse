@@ -1,24 +1,23 @@
 from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
+from flask_pymongo import PyMongo
+from bson.json_util import dumps
 import json
 
 app = Flask(__name__, static_url_path='')
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mxWarehouse"
 CORS(app)
 
+mongo = PyMongo(app)
+components = mongo.db.components
 
 @app.route('/')
 def index():
     return send_file('static/index.html')
 
-@app.route('/search',methods=['POST'])
+@app.route('/api/search')
 def search():
-    data = request.get_json()
-    print(data)
-    if data["keyword"]:
-        to_return = {"result": [{"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param"}]}
-    else:
-        to_return = {"result" : []}
-    return jsonify(**to_return)
+    return dumps({'result': components.find()})
 
 @app.route('/img/<filename>')
 # Fix the problem of finding images
