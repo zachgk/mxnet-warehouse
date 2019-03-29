@@ -1,4 +1,5 @@
 import pymongo
+import random
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -13,4 +14,8 @@ new_components = [
         {"name": "resnet-50", "type": "symbol-params", "symbol_url": "https://sample.com/res50-symbol.json", "params_url": "https://sample.com/res50-0000.param"},
         {"name": "resnet-152", "type": "symbol-params", "symbol_url": "https://sample.com/res152-symbol.json", "params_url": "https://sample.com/res152-0000.param"},
 ]
-print(components.insert_many(new_components).inserted_ids)
+for comp in new_components:
+    comp['labels'] = ["January", "February", "March", "April", "May", "June", "July"]
+    comp['usage'] = [random.randint(1000, 10000)]
+    while len(comp['usage']) < len(comp['labels']):
+        comp['usage'].append(random.randint(-100, 100) + comp['usage'][-1])
