@@ -18,6 +18,7 @@ new_components = [
         {"name": "relu", "type": "symbol-params", "symbol_url": "https://sample.com/relu.json", "paper": "https://www.cs.toronto.edu/~hinton/absps/reluICML.pdf", "tags": ["operator", "activation"]},
         {"name": "elu", "type": "symbol-params", "symbol_url": "https://sample.com/elu.json", "paper": "https://arxiv.org/abs/1511.07289", "tags": ["operator", "activation"]},
         {"name": "leakyRelu", "type": "symbol-params", "symbol_url": "https://sample.com/leakyRelu.json", "paper": "http://robotics.stanford.edu/~amaas/papers/relu_hybrid_icml2013_final.pdf", "tags": ["operator", "activation"]},
+        {"name": "elish", "type": "symbol-params", "symbol_url": "https://sample.com/leakyRelu.json", "paper": "https://arxiv.org/pdf/1808.00783.pdf", "tags": ["operator", "activation"]},
 ]
 for comp in new_components:
     comp['labels'] = ["January", "February", "March", "April", "May", "June", "July"]
