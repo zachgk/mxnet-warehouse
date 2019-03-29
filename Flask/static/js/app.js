@@ -17,11 +17,11 @@ function MainCtrl($http, $scope, $interval){
       $scope.showError = false;
       $scope.showResult = false;
       // Prepare input data
-      obj = {"keyword": $scope.word}
+      obj = {"q": $scope.word}
       $http({
         url: preUrl+"/api/components",
         method: "GET",
-        data: obj
+        params: obj
       }).then(function (success){
         console.log(success["data"])
         if (success["data"]["result"].length > 0) {

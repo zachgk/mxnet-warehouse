@@ -17,7 +17,15 @@ def index():
 
 @app.route('/api/components')
 def listComponents():
-    return dumps({'result': components.find()})
+    query = request.args.get('q')
+    if query:
+        words = query.strip().split(' ')
+        finding = {
+            "$or": [{field: {"$regex": '|'.join([".*%s.*" % word for word in words])}} for field in ['name', 'type']]
+        }
+    else:
+        finding = dict()
+    return dumps({'result': components.find(finding)})
 
 @app.route('/api/components/<component>')
 def getComponent(component):
