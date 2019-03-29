@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MXNet Warehouse</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Basic Module input -->
+    <script src="./js/angular.js"></script>
+    <script src="./js/ui-bootstrap-tpls-2.5.0.js"></script>
+    <!-- Main API -->
+    <script src="./js/upload.js"></script>
+</head>
+
+<body ng-controller="MyController" ng-init="init()">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <div class="navbar-header">
+                    <a class="navbar-brand">MX-warehouse</a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-success" ng-click="goSearch()">Back to Search</button>
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Upload your model</h2>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Model Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Symbol URL</label>
+                    <div class="col-sm-10">
+                        <input type="url" class="form-control" id="inputPassword3"
+                            placeholder="https://sample.com/symbol.json">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Params URL</label>
+                    <div class="col-sm-10">
+                        <input type="url" class="form-control" id="inputPassword3"
+                            placeholder="https://sample.com/0000-param">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">type</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="symbol-json">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Upload your model</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Paper URL</label>
+                        <div class="col-sm-10">
+                            <input type="url" class="form-control">
+                        </div>
+                </div>
+                <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Tags</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="use comma to saparate">
+                        </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Upload</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

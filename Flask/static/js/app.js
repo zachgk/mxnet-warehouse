@@ -8,9 +8,10 @@ function MainCtrl($http, $scope, $interval) {
         $scope.words = {};
         $scope.showError = false;
         $scope.showResult = false;
+        $scope.searchword();
     };
-    $scope.goLogin = function() {
-        window.location = "login.html";
+    $scope.goUpload = function() {
+        window.location = "upload.html";
     };
     $scope.componentColor = function(item) {
         if(item.tags.includes("model")) {
